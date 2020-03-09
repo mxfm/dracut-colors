@@ -33,5 +33,5 @@ install() {
     
     inst /bin/setcolors
     inst "$moddir/colors" "/etc/colors"
-    inst_hook cmdline 10 "$moddir/setcolors.sh"
+    inst_hook cmdline 00 "$moddir/setcolors.sh"
 }
