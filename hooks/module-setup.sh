@@ -2,7 +2,7 @@
 
 # called by dracut
 check() {
-    require_binaries /bin/setcolors
+    require_binaries setcolors
 }
 
 # called by dracut
@@ -14,9 +14,9 @@ depends() {
 install() {
 
     [[ -s /etc/vconsole.conf ]] && . /etc/vconsole.conf
-        
+
     COLORS=""
-        
+
     for COLOR_ID in $(seq 0 15)
     do
         COLOR=$(eval "echo \$COLOR_${COLOR_ID}")
@@ -30,8 +30,8 @@ install() {
     done
 
     echo -ne "$COLORS" > "$moddir/colors"
-    
-    inst /bin/setcolors
+
+    inst setcolors
     inst "$moddir/colors" "/etc/colors"
     inst_hook cmdline 00 "$moddir/setcolors.sh"
 }
